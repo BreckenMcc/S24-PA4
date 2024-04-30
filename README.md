@@ -1,4 +1,4 @@
-Battleship game
+Battleship gam
 Design Document
 
 
