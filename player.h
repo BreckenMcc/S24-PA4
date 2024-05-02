@@ -6,7 +6,15 @@ using namespace std;
 
 class Player{
     private: 
+        string name;
+        bool ai;
+        int wins, playerTurn;
+    public:
+        Player();
+        Player(string, bool, int, int);
+        Player(const Player& rhs);
 
+        void setName();
 
 
 
