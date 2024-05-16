@@ -122,7 +122,10 @@ void Board::reciveAttack(Coordinate c){
         grid[c.getXValue][c.getYValue] = 'X';
     }
 }
-void Board::displayBoard(){
+void Board::displayPlayerBoard(){
+    
+}
+void Board::displayOppBoard(){
     for(int i = 0; i < 9; i++){
         for(int j = 0; j < 9; i++){
             cout << "[";

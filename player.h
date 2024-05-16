@@ -59,12 +59,5 @@ class Player{
                 }
             }while(validMove == false);
         }
-        void displayPlayerBoard() const{
-            
-        }
-        void displayOppBoard() const{
-
-        }
-
 };
 #endif
