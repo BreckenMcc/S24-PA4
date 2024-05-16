@@ -1,4 +1,4 @@
-#include coordinate.h
+#include "coordinate.h"
 
 Coordinate::Coordinate(){
     xValue, yValue = 0;

@@ -1,4 +1,5 @@
-#include board.h
+#include "board.h"
+#include "ship.h"
 
 Board::Board(){
     Ship* ships = new Ship[5];
@@ -112,7 +113,7 @@ void Board::placeShip(Ship s){
         delete [] ships;
         ships = temp;
     }
-    
+
     ships[numShips] = s;
     numShips++
 }

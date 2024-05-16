@@ -25,4 +25,5 @@ class Game{
         void startGame();
         void checkWin();
         void endGame();
-}
+};
+#endif
