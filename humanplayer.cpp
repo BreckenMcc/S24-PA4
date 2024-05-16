@@ -38,3 +38,19 @@ void HumanPlayer::setPlayerBoard(Board p){
 void HumanPlayer::setOpponentBoard(Board opp){
     opponentBoard = opp;
 }
+
+void HumanPlayer::makeMove(Player* opponent){
+    Player::makeMove();
+    opponent->getPlayerBoard()->displayOpponentBoard();
+
+    cout << "Input coordinates (x,y) for your move: " << endl;
+    getline(cin, x);
+    getline(cin, y);
+    Coordinate move(x,y);
+    if(opponent->checkExistingMove(move) == false){
+         opponent->receiveAttack(move);
+    }
+    else{
+        makeMove(opponent);
+    }
+}

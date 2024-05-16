@@ -9,12 +9,12 @@ template<class T1>
 class Player{
     private: 
         string name;
-        Board playerBoard, opponentBoard;
+        Board* playerBoard, opponentBoard;
     public:
         Player(){
             name = "";
         }
-        Player(string n, Board pl, Board opp){
+        Player(string n, Board* pl, Board* opp){
             name = n;
             playerBoard = pl;
             opponentBoard = opp;
@@ -49,15 +49,15 @@ class Player{
             bool validMove = false;
             int x, y;
             do(){
-                opponent.displayBoard();
+                opponent->displayBoard();
                 cout << "Input coordinates (x,y) for your move: " << endl;
                 getline(cin, x);
                 getline(cin, y);
                 Coordinate move(x,y);
-                if(oppnent.checkValidPlacement(start, end) == false){
-                    opponent.receiveAttack(move)
+                if(opponent->checkExistingMove(move) == false){
+                    opponent->receiveAttack(move);
                 }
-                }while(validMove == false);
+            }while(validMove == false);
         }
         void displayPlayerBoard() const{
             

@@ -4,10 +4,10 @@
 class AI : public Player<Board> {
     private:
     Coordinate chooseMove();
-    int randomNum(int min, int max);
+    int randomNum(int, int);
 
     public:
-    void makeMove(Player<Board>* opponent);
+    void makeMove(Player<Board>* opponent) override;
 
     AI();
     AI(string, Board, Board);
@@ -20,7 +20,6 @@ class AI : public Player<Board> {
     void setName(string);
     void setPlayerBoard(Board);
     void setOpponentBoard(Board);
-
 
 }; 
 #endif

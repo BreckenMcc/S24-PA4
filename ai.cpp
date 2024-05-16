@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "ai.h"
 
 AI::AI(){
@@ -38,17 +39,24 @@ void AI::setOpponentBoard(Board o){
     opponentBoard = opp;
 }
 
+int AI::randomNum(int min, int max){
+    return min + rand() % (max - min + 1);
+}
+
 void AI::makeMove(Player* opponent){
-            bool validMove = false;
-            int x, y;
-            do(){
-                opponent.displayBoard();
-                cout << "Input coordinates (x,y) for your move: " << endl;
-                getline(cin, x);
-                getline(cin, y);
-                Coordinate move(x,y);
-                if(oppnent.checkValidPlacement(start, end) == false){
-                    opponent.receiveAttack(move)
-                }
-                }while(validMove == false);
+    Player::makeMove();
+    Coordinate move = chooseMove();
+
+    if(opponent->getPlayerBoard()->checkExistingMove() == false){
+        opponent->getPlayerBoard()->receiveAttack(move);
+    }
+    else{
+        makeMove(opponent);
+    }
+}
+
+Coordinate AI::chooseMove(){
+    int x = randomNum(0, 10);
+    int y = randomNum(0, 10);
+    return Coordinate(x,y);
 }

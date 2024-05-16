@@ -2,10 +2,8 @@
 #define HUMANPLAYER_H
 
 class HumanPlayer : public player<Board> {
-    private:
-
     public:
-    void makeMove(Player<Board>* opponent);
+    void makeMove(Player<Board>* opponent) override;
 
     HumanPlayer();
     HumanPlayer(string, Board, Board);
