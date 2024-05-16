@@ -7,20 +7,20 @@ using namespace std;
 
 class Game{
     private:
-        Player* playerOne, playerTwo;
+        Player<Board> *playerOne, *playerTwo;
         bool gameOver;
 
     public:
         Game();
-        Game(Player*, Player*, bool);
+        Game(Player<Board>*, Player<Board>*, bool);
         Game(const Game&);
 
-        void setPlayerOne(Player*);
-        void setPlayerTwo(Player*);
+        void setPlayerOne(Player<Board>*);
+        void setPlayerTwo(Player<Board>*);
         void setGameOver(bool);
 
-        Player* getPlayerOne();
-        Player* getPlayerTwo();
+        Player<Board>* getPlayerOne();
+        Player<Board>* getPlayerTwo();
         bool getGameOver();
 
         void startGame();

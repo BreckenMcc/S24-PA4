@@ -9,7 +9,7 @@ class Coordinate{
         int xValue, yValue;
     public:
         Coordinate();
-        Coordinate(bool, int, int);
+        Coordinate(int, int);
         Coordinate(const Coordinate& rhs);
 
         void setXValue(int);

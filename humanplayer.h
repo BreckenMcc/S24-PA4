@@ -1,7 +1,7 @@
 #ifndef HUMANPLAYER_H
 #define HUMANPLAYER_H
 
-class HumanPlayer : public player<Board> {
+class HumanPlayer : public Player<Board> {
     public:
     void makeMove(Player<Board>* opponent) override;
 

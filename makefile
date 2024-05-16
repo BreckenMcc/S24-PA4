@@ -18,7 +18,7 @@ game.o: game.cpp game.h player.h
 humanplayer.o: humanplayer.cpp humanplayer.h 
 	g++ -c humanplayer.cpp -g
 
-ship.o: ship.cpp ship.h 
+ship.o: ship.cpp ship.h board.h
 	g++ -c ship.cpp -g
 
 clean:

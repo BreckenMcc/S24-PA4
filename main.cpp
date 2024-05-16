@@ -5,7 +5,6 @@
 #include "coordinate.h"
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
 
 int main(){
     Board playerSelf, playerOpp, aiSelf, aiOpp;
@@ -18,7 +17,7 @@ int main(){
     cout << "Input coordinates (x,y) for your choice: " << endl;
     
     int x, y;
-    getline(cin, x);
-    getline(cin, y);
+    cin >> x;
+    cin >> y;
     Coordinate start(x,y);
 }

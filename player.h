@@ -5,16 +5,16 @@
 #include <iostream> 
 using namespace std;
 
-template<class T1>
+template<class T>
 class Player{
     private: 
         string name;
-        Board* playerBoard, opponentBoard;
+        Board *playerBoard, *opponentBoard;
     public:
-        Player(){
+        Player<T>(){
             name = "";
         }
-        Player(string n, Board* pl, Board* opp){
+        Player<T>(string n, Board* pl, Board* opp){
             name = n;
             playerBoard = pl;
             opponentBoard = opp;
@@ -38,26 +38,13 @@ class Player{
         string getName(){
             return name;
         }
-        Board getPlayerBoard(){
+        Board* getPlayerBoard(){
             return playerBoard;
         }
-        Board getOpponentBoard(){
+        Board* getOpponentBoard(){
             return opponentBoard;
         }
 
-        void makeMove(Player* opponent){
-            bool validMove = false;
-            int x, y;
-            do(){
-                opponent->displayBoard();
-                cout << "Input coordinates (x,y) for your move: " << endl;
-                getline(cin, x);
-                getline(cin, y);
-                Coordinate move(x,y);
-                if(opponent->checkExistingMove(move) == false){
-                    opponent->receiveAttack(move);
-                }
-            }while(validMove == false);
-        }
+        void virtual makeMove(Player* opponent) = 0;
 };
 #endif

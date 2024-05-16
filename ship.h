@@ -2,6 +2,7 @@
 #define SHIP_H
 
 #include "coordinate.h"
+#include "board.h"
 #include <iostream> 
 using namespace std;
 
