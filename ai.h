@@ -1,12 +1,13 @@
 #ifndef AI_H
 #define AI_H
 
-class AI : public player<Board> {
+class AI : public Player<Board> {
     private:
     Coordinate chooseMove();
     int randomNum(int min, int max);
 
     public:
+    void makeMove(Player<Board>* opponent);
 
     AI();
     AI(string, Board, Board);
@@ -19,6 +20,7 @@ class AI : public player<Board> {
     void setName(string);
     void setPlayerBoard(Board);
     void setOpponentBoard(Board);
+
 
 }; 
 #endif

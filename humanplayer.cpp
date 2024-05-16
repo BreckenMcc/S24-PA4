@@ -16,25 +16,25 @@ HumanPlayer::HumanPlayer(const HumanPlayer& rhs){
 }
 
 string HumanPlayer::getName(){
-
+    return name;
 }
 
 Board HumanPlayer::getPlayerBoard(){
-
+    return playerBoard;
 }
 
 Board HumanPlayer::getOpponentBoard(){
-
+    return opponentBoard;
 }
     
-void HumanPlayer::setName(string){
-
+void HumanPlayer::setName(string nm){
+    name = nm
 }
 
-void HumanPlayer::setPlayerBoard(Board){
-
+void HumanPlayer::setPlayerBoard(Board p){
+    playerBoard = p;
 }
 
-void HumanPlayer::setOpponentBoard(Board){
-
+void HumanPlayer::setOpponentBoard(Board opp){
+    opponentBoard = opp;
 }

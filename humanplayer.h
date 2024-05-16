@@ -3,9 +3,9 @@
 
 class HumanPlayer : public player<Board> {
     private:
-    
 
     public:
+    void makeMove(Player<Board>* opponent);
 
     HumanPlayer();
     HumanPlayer(string, Board, Board);

@@ -1,5 +1,4 @@
 #include "ship.h"
-#include "coordinate.h"
 
 Ship::Ship(){
     size = 2;
