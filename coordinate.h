@@ -7,7 +7,7 @@ using namespace std;
 class Coordinate{
     private: 
         int xValue, yValue;
-        bool hit
+        bool hit;
     public:
         Coordinate();
         Coordinate(bool, int, int);
