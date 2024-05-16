@@ -32,5 +32,6 @@ class Board{
         void reciveAttack(Coordinate);
         void displayPlayerBoard();
         void displayOppBoard();
+        void checkSunk(ship);
 };
 #endif
