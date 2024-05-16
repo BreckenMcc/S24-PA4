@@ -1,16 +1,15 @@
-#ifndef AI_H
-#define AI_H
+#ifndef HUMANPLAYER_H
+#define HUMANPLAYER_H
 
-class AI : public player<Board> {
+class HumanPlayer : public player<Board> {
     private:
-    Coordinate
-    int randomNum;
+    
 
     public:
 
-    AI();
-    AI(string, Board, Board);
-    AI(const AI& rhs);
+    HumanPlayer();
+    HumanPlayer(string, Board, Board);
+    HumanPlayer(const HumanPlayer& rhs);
 
     string getName();
     Board getPlayerBoard();
