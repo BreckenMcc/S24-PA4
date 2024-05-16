@@ -123,7 +123,18 @@ void Board::reciveAttack(Coordinate c){
     }
 }
 void Board::displayPlayerBoard(){
-    
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; i++){
+            cout << "[";
+            if(grid[i][j] != ''){
+                cout << grid[i][j];
+            }else{
+                cout << ' ';
+            }
+            cout << "]";
+        }
+        cout << endl;
+    }
 }
 void Board::displayOppBoard(){
     for(int i = 0; i < 9; i++){

@@ -30,6 +30,7 @@ class Board{
         bool checkValidPlacement(Coordinate, Coordinate);
         void placeShip(Ship, Coordinate, Coordinate);
         void reciveAttack(Coordinate);
-        void displayBoard();
+        void displayPlayerBoard();
+        void displayOppBoard();
 };
 #endif
