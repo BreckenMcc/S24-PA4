@@ -14,7 +14,8 @@ int main(){
     cout << "Welcome to Battleship!" << endl << "Here is your board!" << endl;
 
     //place Carrier Ship
-    validPlacement = false;
+    int x, y, x2, y2;
+    bool validPlacement = false;
     Coordinate st(0,0);
     Coordinate end(0,0);
     do{
@@ -62,7 +63,7 @@ int main(){
     playerSelf.placeShip(carrier, st, end);
 
     //place Battle Ship
-    bool validPlacement = false;
+    validPlacement = false;
     do{
         playerSelf.displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Battleship (4 spaces)" << endl;
@@ -108,7 +109,7 @@ int main(){
     playerSelf.placeShip(battleship, st, end);
 
     //place Destroyer
-    bool validPlacement = false;
+    validPlacement = false;
     do{
         playerSelf.displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Destroyer (3 spaces)" << endl;
@@ -154,7 +155,7 @@ int main(){
     playerSelf.placeShip(battleship, st, end);
 
     //place Battle Ship
-    bool validPlacement = false;
+    validPlacement = false;
     do{
         playerSelf.displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Submarine (3 spaces)" << endl;
@@ -196,11 +197,11 @@ int main(){
         }
     }while(validPlacement == false);
 
-    Ship battleship(3, false, st, end);
+    Ship submarine(3, false, st, end);
     playerSelf.placeShip(battleship, st, end);
 
     //place Battle Ship
-    bool validPlacement = false;
+    validPlacement = false;
     do{
         playerSelf.displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Patrol Boat (2 spaces)" << endl;
@@ -242,8 +243,8 @@ int main(){
         }
     }while(validPlacement == false);
 
-    Ship battleship(2, false, st, end);
+    Ship patrolBoat(2, false, st, end);
     playerSelf.placeShip(battleship, st, end);
 
-    
+
 }
