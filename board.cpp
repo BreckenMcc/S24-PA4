@@ -123,7 +123,9 @@ void Board::reciveAttack(Coordinate c){
     }
 }
 void Board::displayPlayerBoard(){
+    cout << "  A  B  C  D  E  F  G  H  I  J" << endl;
     for(int i = 0; i < 9; i++){
+        cout << i++;
         for(int j = 0; j < 9; i++){
             cout << "[";
             if(grid[i][j] != ''){
@@ -137,7 +139,9 @@ void Board::displayPlayerBoard(){
     }
 }
 void Board::displayOppBoard(){
+    cout << "  A  B  C  D  E  F  G  H  I  J" << endl;
     for(int i = 0; i < 9; i++){
+        cout << i++;
         for(int j = 0; j < 9; i++){
             cout << "[";
             if(grid[i][j] == 'X' || grid[i][j] == 'O'){
