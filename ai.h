@@ -3,8 +3,8 @@
 
 class AI : public player<Board> {
     private:
-    Coordinate
-    int randomNum;
+    Coordinate chooseMove();
+    int randomNum(int min, int max);
 
     public:
 

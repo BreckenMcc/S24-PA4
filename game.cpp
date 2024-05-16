@@ -1,5 +1,5 @@
 #include "game.h"
-#include "player.h"
+
 
 Game::Game(){
     playerOne = playerTwo = nullptr;

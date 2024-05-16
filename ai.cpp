@@ -29,9 +29,11 @@ Board AI::getOpponentBoard(){
 void AI::setName(string n){
     name = n;
 }
+
 void AI::setPlayerBoard(Board p){
     playerBoard = p;
 }
+
 void AI::setOpponentBoard(Board o){
     opponentBoard = opp;
 }
