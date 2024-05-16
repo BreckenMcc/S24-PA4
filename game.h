@@ -23,7 +23,7 @@ class Game{
         bool getGameOver();
 
         void startGame();
-        void checkWin();
+        int checkWin();
         void endGame();
 };
 #endif

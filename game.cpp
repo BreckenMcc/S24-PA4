@@ -22,14 +22,49 @@ void Game::setPlayerOne(Player* o){
 void Game::setPlayerTwo(Player* t){
     playerTwo = t;
 }
-void Game::setGameOver(bool){
-
+void Game::setGameOver(bool g){
+    gameOver = g;
 }
 
-Player* Game::getPlayerOne();
-Player* Game::getPlayerTwo();
-bool Game::getGameOver();
+Player* Game::getPlayerOne(){
+    return playerOne;
+}
+Player* Game::getPlayerTwo(){
+    return playerTwo;
+}
+bool Game::getGameOver(){
+    return gameOver;
+}
 
-void Game::startGame();
-void Game::checkWin();
-void Game::endGame();
+void Game::startGame(){
+    
+}
+int Game::checkWin(){
+    int playerOneShips, playerTwoShips;
+
+    for(int i = 0; i < playerOne.getPlayerBoard.getNumShips; i++){
+        if(!playerOne.getPlayerBoard.getShips[i]){
+            playerOneShips++;
+        }
+    }
+    for(int i = 0; i < playerTwo.getPlayerBoard.getNumShips; i++){
+        if(!playerTwo.getPlayerBoard.getShips[i]){
+            playerTwoShips++;
+        }
+    }
+
+    if(playerOneShips == 0){
+        gameOver = true;
+        return 2;
+    }
+    if(playerTwoShips == 0){
+        gameOver = true;
+        return 1;
+    }
+
+    gameOver = false;
+    return 0;
+}
+void Game::endGame(){
+
+}
