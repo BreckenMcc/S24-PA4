@@ -7,7 +7,7 @@ using namespace std;
 
 template<class T>
 class Player{
-    private: 
+    protected: 
         string name;
         Board *playerBoard, *opponentBoard;
     public:

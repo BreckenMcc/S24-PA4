@@ -4,8 +4,11 @@ battleship: main.o game.o board.o humanplayer.o ai.o ship.o coordinate.o
 main.o: main.cpp ai.h board.h coordinate.h game.h humanplayer.h player.h ship.h 
 	g++ -c main.cpp -g
 
-ai.o: ai.cpp ai.h 
+ai.o: ai.cpp ai.h board.h player.h
 	g++ -c ai.cpp -g 
+
+ship.o: ship.cpp ship.h board.h
+	g++ -c ship.cpp -g
 
 board.o: board.cpp board.h ship.h
 	g++ -c board.cpp -g
@@ -15,11 +18,8 @@ coordinate.o: coordinate.cpp coordinate.h
 
 game.o: game.cpp game.h player.h
 
-humanplayer.o: humanplayer.cpp humanplayer.h 
+humanplayer.o: humanplayer.cpp humanplayer.h board.h player.h
 	g++ -c humanplayer.cpp -g
-
-ship.o: ship.cpp ship.h board.h
-	g++ -c ship.cpp -g
 
 clean:
 	rm* .o battleship

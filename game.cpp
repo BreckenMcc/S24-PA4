@@ -5,7 +5,7 @@ Game::Game(){
     playerOne = playerTwo = nullptr;
     gameOver = false;
 }
-Game::Game(Player* o, Player* t, bool g){
+Game::Game(Player<Board>* o, Player<Board>* t, bool g){
     playerOne = o;
     playerTwo = t;
     gameOver = g;
@@ -16,20 +16,20 @@ Game::Game(const Game& rhs){
     gameOver = rhs.gameOver;
 }
 
-void Game::setPlayerOne(Player* o){
+void Game::setPlayerOne(Player<Board>* o){
     playerOne = o;
 }
-void Game::setPlayerTwo(Player* t){
+void Game::setPlayerTwo(Player<Board>* t){
     playerTwo = t;
 }
 void Game::setGameOver(bool g){
     gameOver = g;
 }
 
-Player* Game::getPlayerOne(){
+Player<Board>* Game::getPlayerOne(){
     return playerOne;
 }
-Player* Game::getPlayerTwo(){
+Player<Board>* Game::getPlayerTwo(){
     return playerTwo;
 }
 bool Game::getGameOver(){
@@ -42,13 +42,13 @@ void Game::startGame(){
 int Game::checkWin(){
     int playerOneShips, playerTwoShips;
 
-    for(int i = 0; i < playerOne.getPlayerBoard.getNumShips; i++){
-        if(!playerOne.getPlayerBoard.getShips[i]){
+    for(int i = 0; i < playerOne->getPlayerBoard()->getNumShips(); i++){
+        if(!playerOne->getPlayerBoard()->getShips()[i].getSunk()){
             playerOneShips++;
         }
     }
-    for(int i = 0; i < playerTwo.getPlayerBoard.getNumShips; i++){
-        if(!playerTwo.getPlayerBoard.getShips[i]){
+    for(int i = 0; i < playerTwo->getPlayerBoard()->getNumShips(); i++){
+        if(!playerTwo->getPlayerBoard()->getShips()[i].getSunk()){
             playerTwoShips++;
         }
     }

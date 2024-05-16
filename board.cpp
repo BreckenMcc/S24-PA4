@@ -3,7 +3,10 @@
 
 Board::Board(){
     Ship* ships = new Ship[5];
-    char grid[9][9];
+    grid = new char*[9];
+    for(int i = 0; i < 9; i++){
+        grid[i] = new char[9];
+    }
     numShips = 0;
     maxShips = 5;
 }
@@ -12,7 +15,6 @@ Board::Board(Ship* s, char* b, int n, int m){
     for(int i = 0; i < n; i++){
         ships[i]=s[i];
     }
-    board = b;
     numShips = n;
     maxShips = m;
 }
@@ -21,7 +23,7 @@ Board::Board(const Board& rhs){
     for(int i = 0; i < rhs.numShips; i++){
         ships[i]=rhs.ships[i];
     }
-    board = rhs.board;
+    grid = rhs.grid;
     numShips = rhs.numShips;
     maxShips = rhs.maxShips;
 }
@@ -38,52 +40,52 @@ void Board::setShips(Ship* s, int n, int m){
     numShips = n;
     maxShips = m;
 }
-void Board::setGrid(char* g){
+void Board::setGrid(char** g){
     grid = g;
 }
-void setNumShips(int n){
+void Board::setNumShips(int n){
     numShips = n;
 }
-void setMaxShips(int m){
+void Board::setMaxShips(int m){
     maxShips = m;
 }
 
 Ship* Board::getShips(){
     return ships;
 }
-*char Board::getGrid(){
+char** Board::getGrid(){
     return grid;
 }
-int getNumShips(){
+int Board::getNumShips(){
     return numShips;
 }
-int getMaxShips(){
+int Board::getMaxShips(){
     return maxShips;
 }
 
 
 bool Board::checkExistingMove(Coordinate c){
-    if(grid[c.getXValue][c.getYValue] == 'X' || grid[c.getXValue][c.getYValue] == 'O'){
-        count << "This coordinate has already been attacked" << endl;
+    if(grid[c.getXValue()][c.getYValue()] == 'X' || grid[c.getXValue()][c.getYValue()] == 'O'){
+        cout << "This coordinate has already been attacked" << endl;
         return true;
     }else{
         return false;
     }
 }
 bool Board::checkValidPlacement(Coordinate start, Coordinate end){
-    if(start.getXValue != end.getXValue && start.getYValue != end.getYValue){
+    if(start.getXValue() != end.getXValue() && start.getYValue() != end.getYValue()){
         return false;
     }
-    if(start.getXValue > 9 || start.getYValue > 9 || end.getXValue > 9 || end.getYValue > 9 || start.getXValue < 0 || start.getYValue < 0 || end.getXValue < 0 || end.getYValue < 0 ){
+    if(start.getXValue() > 9 || start.getYValue() > 9 || end.getXValue() > 9 || end.getYValue() > 9 || start.getXValue() < 0 || start.getYValue() < 0 || end.getXValue() < 0 || end.getYValue() < 0 ){
         return false;
     }
-    for(int i = start.getXValue; i < end.getXValue; i++){
-        if(grid[i][start.getYValue] != ''){
+    for(int i = start.getXValue(); i < end.getXValue(); i++){
+        if(grid[i][start.getYValue()] != '\0'){
             return false;
         }
     }
-    for(int i = start.getYValue; i < end.getYValue; i++){
-        if(grid[start.getXValue][i] != ''){
+    for(int i = start.getYValue(); i < end.getYValue(); i++){
+        if(grid[start.getXValue()][i] != '\0'){
             return false;
         }
     }
@@ -91,15 +93,15 @@ bool Board::checkValidPlacement(Coordinate start, Coordinate end){
     return true;
 
 }
-void Board::placeShip(Ship s){
-    if(s.getStartCoord.getXValue == s.getEndCoord.getXValue){
-        for(int i = s.getStartCoord.getYValue; i < s.getEndCoord.getYValue; i++){
-            grid[s.getStartCoord.getXValue][i] = static_cast<char>(s.getSize + 48);
+void Board::placeShip(Ship s, Coordinate st, Coordinate end){
+    if(s.getStartCoord().getXValue() == s.getEndCoord().getXValue()){
+        for(int i = s.getStartCoord().getYValue(); i < s.getEndCoord().getYValue(); i++){
+            grid[s.getStartCoord().getXValue()][i] = static_cast<char>(s.getSize() + 48);
         }
     }
-    if(s.getStartCoord.getYValue == s.getEndCoord.getYValue){
-        for(int i = s.getStartCoord.getXValue; i < s.getEndCoord.getXValue; i++){
-            grid[i][s.getStartCoord.getYValue] = static_cast<char>(s.getSize + 48);
+    if(s.getStartCoord().getYValue() == s.getEndCoord().getYValue()){
+        for(int i = s.getStartCoord().getXValue(); i < s.getEndCoord().getXValue(); i++){
+            grid[i][s.getStartCoord().getYValue()] = static_cast<char>(s.getSize() + 48);
         }
     }
 
@@ -115,11 +117,11 @@ void Board::placeShip(Ship s){
     }
 
     ships[numShips] = s;
-    numShips++
+    numShips++;
 }
-void Board::reciveAttack(Coordinate c){
-    if(grid[c.getXValue][c.getYValue] != '' || grid[c.getXValue][c.getYValue] != 'X' || grid[c.getXValue][c.getYValue] != 'O'){
-        grid[c.getXValue][c.getYValue] = 'X';
+void Board::receiveAttack(Coordinate c){
+    if(grid[c.getXValue()][c.getYValue()] != '\0' || grid[c.getXValue()][c.getYValue()] != 'X' || grid[c.getXValue()][c.getYValue()] != 'O'){
+        grid[c.getXValue()][c.getYValue()] = 'X';
     }
 }
 void Board::displayPlayerBoard(){
@@ -128,7 +130,7 @@ void Board::displayPlayerBoard(){
         cout << i++;
         for(int j = 0; j < 9; i++){
             cout << "[";
-            if(grid[i][j] != ''){
+            if(grid[i][j] != '\0'){
                 cout << grid[i][j];
             }else{
                 cout << ' ';
@@ -155,18 +157,29 @@ void Board::displayOppBoard(){
     }
 }
 void Board::checkSunk(Ship s){
-    if(s.getStartCoord.getXValue == s.getEndCoord.getXValue){
-        for(int i = s.getStartCoord.getYValue; i < s.getEndCoord.getYValue; i++){
-            if(grid[s.getStartCoord.getXValue][i] != 'X')
+    if(s.getStartCoord().getXValue() == s.getEndCoord().getXValue()){
+        for(int i = s.getStartCoord().getYValue(); i < s.getEndCoord().getYValue(); i++){
+            if(grid[s.getStartCoord().getXValue()][i] != 'X')
                 s.setSunk(true);
         }
     }
-    if(s.getStartCoord.getYValue == s.getEndCoord.getYValue){
-        for(int i = s.getStartCoord.getXValue; i < s.getEndCoord.getXValue; i++){
-            if(grid[i][s.getStartCoord.getYValue] != 'X')
+    if(s.getStartCoord().getYValue() == s.getEndCoord().getYValue()){
+        for(int i = s.getStartCoord().getXValue(); i < s.getEndCoord().getXValue(); i++){
+            if(grid[i][s.getStartCoord().getYValue()] != 'X')
                 s.setSunk(true);
         }
     }
 
     s.setSunk(false);
 }
+
+// Board& operator=(const Board& rhs){
+//     Ship* ships = new Ship[rhs.maxShips];
+//     for(int i = 0; i < rhs.numShips; i++){
+//         ships[i]=rhs.ships[i];
+//     }
+//     grid = rhs.grid;
+//     numShips = rhs.numShips;
+//     maxShips = rhs.maxShips;
+//     return *this;
+// }

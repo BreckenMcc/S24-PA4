@@ -7,7 +7,7 @@
 #include <cstdlib>
 
 int main(){
-    Board playerSelf, playerOpp, aiSelf, aiOpp;
+    Board *playerSelf, *playerOpp, *aiSelf, *aiOpp;
     HumanPlayer* user = new HumanPlayer("user", playerSelf, aiOpp);
     AI computer("computer", aiSelf, playerOpp);
 
@@ -19,7 +19,7 @@ int main(){
     Coordinate st(0,0);
     Coordinate end(0,0);
     do{
-        playerSelf.displayPlayerBoard();
+        playerSelf->displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Carrier (5 spaces)" << endl;
         cout << "Input coordinates (x,y) for your choice: " << endl;
 
@@ -37,16 +37,16 @@ int main(){
 
         if(st.getYValue() == end.getYValue()){
             if(st.getXValue() < end.getXValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
         if(st.getXValue() == end.getXValue()){
             if(st.getYValue() < end.getYValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
 
@@ -60,7 +60,7 @@ int main(){
     }while(validPlacement == false);
 
     Ship carrier(5, false, st, end);
-    playerSelf.placeShip(carrier, st, end);
+    playerSelf->placeShip(carrier, st, end);
 
     
 }

@@ -4,8 +4,8 @@
 AI::AI(){
     name = "";
 }
-AI::AI(string nm, Board p, Board o){
-    name.= nm;
+AI::AI(string nm, Board* p, Board* o){
+    name = nm;
     playerBoard = p;
     opponentBoard = o;
 }
@@ -19,11 +19,11 @@ AI::AI(const AI& rhs){
 string AI::getName(){
     return name;
 }
-Board AI::getPlayerBoard(){
+Board* AI::getPlayerBoard(){
     return playerBoard;
 }
 
-Board AI::getOpponentBoard(){
+Board* AI::getOpponentBoard(){
     return opponentBoard;
 }
     
@@ -31,11 +31,11 @@ void AI::setName(string n){
     name = n;
 }
 
-void AI::setPlayerBoard(Board p){
+void AI::setPlayerBoard(Board* p){
     playerBoard = p;
 }
 
-void AI::setOpponentBoard(Board o){
+void AI::setOpponentBoard(Board* opp){
     opponentBoard = opp;
 }
 
@@ -44,15 +44,14 @@ int AI::randomNum(int min, int max){
 }
 
 void AI::makeMove(Player* opponent){
-    Player::makeMove();
     Coordinate move = chooseMove();
 
-    if(opponent->getPlayerBoard()->checkExistingMove() == false){
-        opponent->getPlayerBoard()->receiveAttack(move);
-    }
-    else{
-        makeMove(opponent);
-    }
+    // if(opponent->getPlayerBoard()->checkExistingMove() == false){
+    //     opponent->getPlayerBoard()->receiveAttack(move);
+    // }
+    // else{
+    //     makeMove(opponent);
+    // }
 }
 
 Coordinate AI::chooseMove(){

@@ -7,29 +7,30 @@ using namespace std;
 
 class Board{
     private:
-        Ship* ships;
-        char* grid;
+        char** grid;
+        Ship* ships = new Ship[10];
         int numShips, maxShips;
     public:
         Board();
         Board(Ship*, char*, int, int);
         Board(const Board&);
         ~Board();
+        //Board& operator=(const Board& rhs);
 
         void setShips(Ship*, int, int);
-        void setGrid(char*);
+        void setGrid(char**);
         void setNumShips(int);
         void setMaxShips(int);
 
         Ship* getShips();
-        char* getGrid();
+        char** getGrid();
         int getNumShips();
         int getMaxShips();
 
         bool checkExistingMove(Coordinate);
         bool checkValidPlacement(Coordinate, Coordinate);
         void placeShip(Ship, Coordinate, Coordinate);
-        void reciveAttack(Coordinate);
+        void receiveAttack(Coordinate);
         void displayPlayerBoard();
         void displayOppBoard();
         void checkSunk(Ship);
