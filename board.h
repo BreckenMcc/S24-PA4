@@ -25,6 +25,7 @@ class Board{
         int getNumShips();
         int getMaxShips();
 
+        bool checkExistingMove(Coordinate);
         bool checkValidPlacement(Coordinate, Coordinate);
         void placeShip(Ship, Coordinate, Coordinate);
         void reciveAttack(Coordinate);

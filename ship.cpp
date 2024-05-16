@@ -38,10 +38,10 @@ int Ship::getSize(){
 bool Ship::getSunk(){
     return sunk;
 }
-Coordinate Ship::getStartLocation(){
+Coordinate Ship::getStartCoord(){
     return startCoord;
 }
-Coordinate Ship::getEndLocation(){
+Coordinate Ship::getEndCoord(){
     return endCoord;
 }
 

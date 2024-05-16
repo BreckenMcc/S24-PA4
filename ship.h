@@ -21,8 +21,8 @@ class Ship{
 
         int getSize();
         bool getSunk();
-        Coordinate getStartLocation();
-        Coordinate getEndLocation();
+        Coordinate getStartCoord();
+        Coordinate getEndCoord();
 
         void setLocation(Coordinate, Coordinate);
         bool checkSunk(Board);

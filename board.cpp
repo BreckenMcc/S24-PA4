@@ -61,7 +61,14 @@ int getMaxShips(){
 }
 
 
-
+bool Board::checkExistingMove(Coordinate c){
+    if(grid[c.getXValue][c.getYValue] == 'X' || grid[c.getXValue][c.getYValue] == 'O'){
+        count << "This coordinate has already been attacked" << endl;
+        return true;
+    }else{
+        return false;
+    }
+}
 bool Board::checkValidPlacement(Coordinate start, Coordinate end){
     if(start.getXValue != end.getXValue && start.getYValue != end.getYValue){
         return false;
@@ -84,7 +91,33 @@ bool Board::checkValidPlacement(Coordinate start, Coordinate end){
 
 }
 void Board::placeShip(Ship s){
-    if(s.getStartLocation.getXValue)
+    if(s.getStartCoord.getXValue == s.getEndCoord.getXValue){
+        for(int i = s.getStartCoord.getYValue; i < s.getEndCoord.getYValue; i++){
+            grid[s.getStartCoord.getXValue][i] = static_cast<char>(s.getSize + 48);
+        }
+    }
+    if(s.getStartCoord.getYValue == s.getEndCoord.getYValue){
+        for(int i = s.getStartCoord.getXValue; i < s.getEndCoord.getXValue; i++){
+            grid[i][s.getStartCoord.getYValue] = static_cast<char>(s.getSize + 48);
+        }
+    }
 }
-void Board::reciveAttack(Coordinate);
-void Board::displayBoard();
+void Board::reciveAttack(Coordinate c){
+    if(grid[c.getXValue][c.getYValue] != '' || grid[c.getXValue][c.getYValue] != 'X' || grid[c.getXValue][c.getYValue] != 'O'){
+        grid[c.getXValue][c.getYValue] = 'X';
+    }
+}
+void Board::displayBoard(){
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; i++){
+            cout << "[";
+            if(grid[i][j] == 'X' || grid[i][j] == 'O'){
+                cout << grid[i][j];
+            }else{
+                cout << ' ';
+            }
+            cout << "]";
+        }
+        cout << endl;
+    }
+}
