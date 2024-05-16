@@ -150,3 +150,19 @@ void Board::displayOppBoard(){
         cout << endl;
     }
 }
+void Board::checkSunk(Ship s){
+    if(s.getStartCoord.getXValue == s.getEndCoord.getXValue){
+        for(int i = s.getStartCoord.getYValue; i < s.getEndCoord.getYValue; i++){
+            if(grid[s.getStartCoord.getXValue][i] != 'X')
+                s.setSunk(true);
+        }
+    }
+    if(s.getStartCoord.getYValue == s.getEndCoord.getYValue){
+        for(int i = s.getStartCoord.getXValue; i < s.getEndCoord.getXValue; i++){
+            if(grid[i][s.getStartCoord.getYValue] != 'X')
+                s.setSunk(true);
+        }
+    }
+
+    s.setSunk(false);
+}

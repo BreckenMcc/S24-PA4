@@ -3,8 +3,7 @@
 Ship::Ship(){
     size = 2;
     sunk = false;
-    startCoord = null;
-    endCoord = null;
+    startCoord = endCoord = nullptr;
 }
 Ship::Ship(int si, bool su, Coordinate st, Coordinate en){
     size = si;
@@ -48,10 +47,4 @@ Coordinate Ship::getEndCoord(){
 void Ship::setLocation(Coordinate st, Coordinate en){
     startCoord = st;
     endCoord = en;
-}
-bool Ship::checkSunk(Board b){
-        if(b.checkCoords){
-            return true;
-        }
-    return false;
 }

@@ -26,6 +26,5 @@ class Ship{
         Coordinate getEndCoord();
 
         void setLocation(Coordinate, Coordinate);
-        bool checkSunk(Board);
 };
 #endif
