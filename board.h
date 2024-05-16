@@ -31,3 +31,4 @@ class Board{
         void reciveAttack(Coordinate);
         void displayBoard();
 };
+#endif

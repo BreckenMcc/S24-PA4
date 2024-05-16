@@ -101,6 +101,20 @@ void Board::placeShip(Ship s){
             grid[i][s.getStartCoord.getYValue] = static_cast<char>(s.getSize + 48);
         }
     }
+
+    if(numShips == maxShips){
+        maxShips++;
+
+        Ship* temp = new Ship[maxShips];
+        for(int i = 0; i < numShips; i++){
+            temp[i] = ships[i];
+        }
+        delete [] ships;
+        ships = temp;
+    }
+    
+    ships[numShips] = s;
+    numShips++
 }
 void Board::reciveAttack(Coordinate c){
     if(grid[c.getXValue][c.getYValue] != '' || grid[c.getXValue][c.getYValue] != 'X' || grid[c.getXValue][c.getYValue] != 'O'){
