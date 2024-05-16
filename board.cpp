@@ -66,7 +66,11 @@ int Board::getMaxShips(){
 
 bool Board::checkExistingMove(Coordinate c){
     if(grid[c.getXValue()][c.getYValue()] == 'X' || grid[c.getXValue()][c.getYValue()] == 'O'){
+<<<<<<< HEAD
         cout << "This coordinate has already been attacked" << endl;
+=======
+        count << "This coordinate has already been attacked" << endl;
+>>>>>>> 8cf53eba4ea8c360778c15a3ba507e72b738bd41
         return true;
     }else{
         return false;
@@ -79,13 +83,22 @@ bool Board::checkValidPlacement(Coordinate start, Coordinate end){
     if(start.getXValue() > 9 || start.getYValue() > 9 || end.getXValue() > 9 || end.getYValue() > 9 || start.getXValue() < 0 || start.getYValue() < 0 || end.getXValue() < 0 || end.getYValue() < 0 ){
         return false;
     }
+<<<<<<< HEAD
     for(int i = start.getXValue(); i < end.getXValue(); i++){
         if(grid[i][start.getYValue()] != '\0'){
+=======
+    for(int i = start.getXValue(); i < end.getXValue; i++){
+        if(grid[i][start.getYValue()] != ''){
+>>>>>>> 8cf53eba4ea8c360778c15a3ba507e72b738bd41
             return false;
         }
     }
     for(int i = start.getYValue(); i < end.getYValue(); i++){
+<<<<<<< HEAD
         if(grid[start.getXValue()][i] != '\0'){
+=======
+        if(grid[start.getXValue()][i] != ''){
+>>>>>>> 8cf53eba4ea8c360778c15a3ba507e72b738bd41
             return false;
         }
     }
