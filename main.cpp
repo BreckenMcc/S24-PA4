@@ -15,7 +15,7 @@ int main(){
 
     //place Carrier Ship
     int x, y;
-    getline(cin, x);
-    getline(cin, y);
+    cin >> x;
+    cin >> y;
     Coordinate start(x,y);
 }
