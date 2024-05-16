@@ -14,38 +14,43 @@ int main(){
     cout << "Welcome to Battleship!" << endl << "Here is your board!" << endl;
 
     //place Carrier Ship
+    int x, y, x2, y2;
     bool validPlacement = false;
-    do(){
+    Coordinate st(0,0);
+    Coordinate end(0,0);
+    do{
         playerSelf.displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Carrier (5 spaces)" << endl;
         cout << "Input coordinates (x,y) for your choice: " << endl;
 
         cin >> x;
         cin >> y;
-        Coordinate start(x,y);
+        st.setXValue(x);
+        st.setYValue(y);
 
         cout << endl << "Please pick the ending coodinate for your Carrier (5 spaces)" << endl;
         cout << "Input coordinates (x,y) for your choice: " << endl;
-        cin >> x;
-        cin >> y;
-        Coordinate end(x,y);
+        cin >> x2;
+        cin >> y2;
+        end.setXValue(x2);
+        end.setYValue(y2);
 
-        if(start.getYValue == end.getYValue){
-            if(start.getXValue < end.getXValue){
-                validPlacement = playerSelf.checkValidPlacement(start, end);
+        if(st.getYValue() == end.getYValue()){
+            if(st.getXValue() < end.getXValue()){
+                validPlacement = playerSelf.checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, start);
+                validPlacement = playerSelf.checkValidPlacement(end, st);
             }
         }
-        if(start.getXValue == end.getXValue){
-            if(start.getYValue < end.getYValue){
-                validPlacement = playerSelf.checkValidPlacement(start, end);
+        if(st.getXValue() == end.getXValue()){
+            if(st.getYValue() < end.getYValue()){
+                validPlacement = playerSelf.checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, start);
+                validPlacement = playerSelf.checkValidPlacement(end, st);
             }
         }
 
-        if((start.getYValue - end.getYValue) != 5  (end.getYValue - start.getYValue) != 5  (end.getXValue - start.getXValue) != 5 || (start.getXValue - end.getXValue) != 5){
+        if((st.getYValue() - end.getYValue()) != 5 || (end.getYValue() - st.getYValue()) != 5 || (end.getXValue() - st.getXValue()) != 5 || (st.getXValue() - end.getXValue()) != 5){
             validPlacement = false; 
         }
 
@@ -54,6 +59,8 @@ int main(){
         }
     }while(validPlacement == false);
 
-    ship carrier(5, false, start, end);
-    playerSelf.placeShip(carrier);
+    Ship carrier(5, false, st, end);
+    playerSelf.placeShip(carrier, st, end);
+
+    
 }
