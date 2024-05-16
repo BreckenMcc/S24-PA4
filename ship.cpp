@@ -3,7 +3,6 @@
 Ship::Ship(){
     size = 2;
     sunk = false;
-    startCoord = endCoord = nullptr;
 }
 Ship::Ship(int si, bool su, Coordinate st, Coordinate en){
     size = si;
@@ -25,7 +24,7 @@ void Ship::setSunk(bool s){
     sunk = s;
 }
 void Ship::setStart(Coordinate st){
-    startCoord = s;
+    startCoord = st;
 }
 void Ship::setEnd(Coordinate en){
     endCoord = en;

@@ -11,7 +11,11 @@ int main(){
     HumanPlayer* user = new HumanPlayer("user", playerSelf, aiOpp);
     AI computer("computer", aiSelf, playerOpp);
 
-    cout << "Welcome to Battleship!" << endl << "Here is your board!" << endl;
+    cout << "Welcome to Battleship!" << endl;
+    cout << "1. Start Game" << endl;
+    cout << "2. Rules" << endl;
+    cout << "0. Quit" << endl;
+    
 
     //place Carrier Ship
     int x, y, x2, y2;
@@ -65,7 +69,7 @@ int main(){
     //place Battle Ship
     validPlacement = false;
     do{
-        playerSelf.displayPlayerBoard();
+        playerSelf->displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Battleship (4 spaces)" << endl;
         cout << "Input coordinates (x,y) for your choice: " << endl;
 
@@ -83,16 +87,16 @@ int main(){
 
         if(st.getYValue() == end.getYValue()){
             if(st.getXValue() < end.getXValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
         if(st.getXValue() == end.getXValue()){
             if(st.getYValue() < end.getYValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
 
@@ -106,12 +110,12 @@ int main(){
     }while(validPlacement == false);
 
     Ship battleship(4, false, st, end);
-    playerSelf.placeShip(battleship, st, end);
+    playerSelf->placeShip(battleship, st, end);
 
     //place Destroyer
     validPlacement = false;
     do{
-        playerSelf.displayPlayerBoard();
+        playerSelf->displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Destroyer (3 spaces)" << endl;
         cout << "Input coordinates (x,y) for your choice: " << endl;
 
@@ -129,16 +133,16 @@ int main(){
 
         if(st.getYValue() == end.getYValue()){
             if(st.getXValue() < end.getXValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
         if(st.getXValue() == end.getXValue()){
             if(st.getYValue() < end.getYValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
 
@@ -152,12 +156,12 @@ int main(){
     }while(validPlacement == false);
 
     Ship destroyer(3, false, st, end);
-    playerSelf.placeShip(battleship, st, end);
+    playerSelf->placeShip(battleship, st, end);
 
     //place Battle Ship
     validPlacement = false;
     do{
-        playerSelf.displayPlayerBoard();
+        playerSelf->displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Submarine (3 spaces)" << endl;
         cout << "Input coordinates (x,y) for your choice: " << endl;
 
@@ -175,16 +179,16 @@ int main(){
 
         if(st.getYValue() == end.getYValue()){
             if(st.getXValue() < end.getXValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
         if(st.getXValue() == end.getXValue()){
             if(st.getYValue() < end.getYValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
 
@@ -198,12 +202,12 @@ int main(){
     }while(validPlacement == false);
 
     Ship submarine(3, false, st, end);
-    playerSelf.placeShip(battleship, st, end);
+    playerSelf->placeShip(battleship, st, end);
 
     //place Battle Ship
     validPlacement = false;
     do{
-        playerSelf.displayPlayerBoard();
+        playerSelf->displayPlayerBoard();
         cout << endl << "Please pick the starting coodinate for your Patrol Boat (2 spaces)" << endl;
         cout << "Input coordinates (x,y) for your choice: " << endl;
 
@@ -221,16 +225,16 @@ int main(){
 
         if(st.getYValue() == end.getYValue()){
             if(st.getXValue() < end.getXValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
         if(st.getXValue() == end.getXValue()){
             if(st.getYValue() < end.getYValue()){
-                validPlacement = playerSelf.checkValidPlacement(st, end);
+                validPlacement = playerSelf->checkValidPlacement(st, end);
             }else{
-                validPlacement = playerSelf.checkValidPlacement(end, st);
+                validPlacement = playerSelf->checkValidPlacement(end, st);
             }
         }
 
@@ -244,7 +248,7 @@ int main(){
     }while(validPlacement == false);
 
     Ship patrolBoat(2, false, st, end);
-    playerSelf.placeShip(battleship, st, end);
+    playerSelf->placeShip(battleship, st, end);
 
 
 }

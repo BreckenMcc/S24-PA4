@@ -2,7 +2,7 @@
 
 
 Board::Board(){
-    Ship* ships = new Ship[5];
+    ships = new Ship[5];
     grid = new char*[9];
     for(int i = 0; i < 9; i++){
         grid[i] = new char[9];
@@ -11,7 +11,7 @@ Board::Board(){
     maxShips = 5;
 }
 Board::Board(Ship* s, char* b, int n, int m){
-    Ship* ships = new Ship[m];
+    ships = new Ship[m];
     for(int i = 0; i < n; i++){
         ships[i]=s[i];
     }
@@ -19,13 +19,13 @@ Board::Board(Ship* s, char* b, int n, int m){
     maxShips = m;
 }
 Board::Board(const Board& rhs){
-    Ship* ships = new Ship[rhs.maxShips];
+    numShips = rhs.numShips;
+    maxShips = rhs.maxShips;
+    ships = new Ship[maxShips];
     for(int i = 0; i < rhs.numShips; i++){
         ships[i]=rhs.ships[i];
     }
     grid = rhs.grid;
-    numShips = rhs.numShips;
-    maxShips = rhs.maxShips;
 }
 Board::~Board(){
     delete [] ships;
@@ -66,11 +66,7 @@ int Board::getMaxShips(){
 
 bool Board::checkExistingMove(Coordinate c){
     if(grid[c.getXValue()][c.getYValue()] == 'X' || grid[c.getXValue()][c.getYValue()] == 'O'){
-<<<<<<< HEAD
         cout << "This coordinate has already been attacked" << endl;
-=======
-        count << "This coordinate has already been attacked" << endl;
->>>>>>> 8cf53eba4ea8c360778c15a3ba507e72b738bd41
         return true;
     }else{
         return false;
@@ -83,22 +79,13 @@ bool Board::checkValidPlacement(Coordinate start, Coordinate end){
     if(start.getXValue() > 9 || start.getYValue() > 9 || end.getXValue() > 9 || end.getYValue() > 9 || start.getXValue() < 0 || start.getYValue() < 0 || end.getXValue() < 0 || end.getYValue() < 0 ){
         return false;
     }
-<<<<<<< HEAD
     for(int i = start.getXValue(); i < end.getXValue(); i++){
         if(grid[i][start.getYValue()] != '\0'){
-=======
-    for(int i = start.getXValue(); i < end.getXValue; i++){
-        if(grid[i][start.getYValue()] != ''){
->>>>>>> 8cf53eba4ea8c360778c15a3ba507e72b738bd41
             return false;
         }
     }
     for(int i = start.getYValue(); i < end.getYValue(); i++){
-<<<<<<< HEAD
         if(grid[start.getXValue()][i] != '\0'){
-=======
-        if(grid[start.getXValue()][i] != ''){
->>>>>>> 8cf53eba4ea8c360778c15a3ba507e72b738bd41
             return false;
         }
     }

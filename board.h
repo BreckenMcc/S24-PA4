@@ -5,10 +5,12 @@
 #include <iostream> 
 using namespace std;
 
+class Ship;
+
 class Board{
     private:
         char** grid;
-        Ship* ships = new Ship[10];
+        Ship* ships;
         int numShips, maxShips;
     public:
         Board();
