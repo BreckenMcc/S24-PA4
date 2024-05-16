@@ -1,20 +1,90 @@
 #include board.h
 
 Board::Board(){
-    Ship* ships = new Ship[];
+    Ship* ships = new Ship[5];
     char grid[9][9];
+    numShips = 0;
+    maxShips = 5;
 }
-Board::Board(Ship*, char);
-Board::Board(const Board&);
-Board::~Board();
+Board::Board(Ship* s, char* b, int n, int m){
+    Ship* ships = new Ship[m];
+    for(int i = 0; i < n; i++){
+        ships[i]=s[i];
+    }
+    board = b;
+    numShips = n;
+    maxShips = m;
+}
+Board::Board(const Board& rhs){
+    Ship* ships = new Ship[rhs.maxShips];
+    for(int i = 0; i < rhs.numShips; i++){
+        ships[i]=rhs.ships[i];
+    }
+    board = rhs.board;
+    numShips = rhs.numShips;
+    maxShips = rhs.maxShips;
+}
+Board::~Board(){
+    delete [] ships;
+}
 
-void Board::setShips(Ship*);
-void Board::setGrid(char);
+void Board::setShips(Ship* s, int n, int m){
+    Ship* ships = new Ship[m];
+    for(int i = 0; i < n; i++){
+        ships[i]=s[i];
+    }
 
-Ship* Board::getShips();
-char Board::getGrid();
+    numShips = n;
+    maxShips = m;
+}
+void Board::setGrid(char* g){
+    grid = g;
+}
+void setNumShips(int n){
+    numShips = n;
+}
+void setMaxShips(int m){
+    maxShips = m;
+}
 
-bool Board::checkValidPlacement(Coordinate, Coordinate);
-void Board::placeShip(Ship, Coordinate, Coordinate);
+Ship* Board::getShips(){
+    return ships;
+}
+*char Board::getGrid(){
+    return grid;
+}
+int getNumShips(){
+    return numShips;
+}
+int getMaxShips(){
+    return maxShips;
+}
+
+
+
+bool Board::checkValidPlacement(Coordinate start, Coordinate end){
+    if(start.getXValue != end.getXValue && start.getYValue != end.getYValue){
+        return false;
+    }
+    if(start.getXValue > 9 || start.getYValue > 9 || end.getXValue > 9 || end.getYValue > 9 || start.getXValue < 0 || start.getYValue < 0 || end.getXValue < 0 || end.getYValue < 0 ){
+        return false;
+    }
+    for(int i = start.getXValue; i < end.getXValue; i++){
+        if(grid[i][start.getYValue] != ''){
+            return false;
+        }
+    }
+    for(int i = start.getYValue; i < end.getYValue; i++){
+        if(grid[start.getXValue][i] != ''){
+            return false;
+        }
+    }
+
+    return true;
+
+}
+void Board::placeShip(Ship s){
+    if(s.getStartLocation.getXValue)
+}
 void Board::reciveAttack(Coordinate);
 void Board::displayBoard();
