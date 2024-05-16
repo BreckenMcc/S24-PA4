@@ -12,12 +12,10 @@ int main(){
     AI computer("computer", aiSelf, playerOpp);
 
     cout << "Welcome to Battleship!" << endl << "Here is your board!" << endl;
-    playerSelf.displayPlayerBoard();
-    cout << endl << "Please pick the starting coodinate for your Carrier ship (5 spaces)" << endl;
-    cout << "Input coordinates (x,y) for your choice: " << endl;
-    
+
+    //place Carrier Ship
     int x, y;
-    cin >> x;
-    cin >> y;
+    getline(cin, x);
+    getline(cin, y);
     Coordinate start(x,y);
 }
